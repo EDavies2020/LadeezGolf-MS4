@@ -4,13 +4,24 @@ font-family: 'Open Sans', sans-serif; */
 html {
     height: 100%;
 }
+
 body {
-    background: url('/media/homepage3.jpg') no-repeat center center fixed;
+    background: url(/media/homepage3.jpg) no-repeat center center fixed;
     background-size: cover;
     height: calc(100vh - 164px);
-    color: #555;
-    font-family: 'Lora', serif !important;
+    color: #fafafa;
+    font-family:'Lora', serif;
 }
+
+/* From Bulma */
+.icon  {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
 .logo-font {
     font-family: 'Lora', serif;
     color: rgb(189, 7, 134);
@@ -31,6 +42,10 @@ body {
     text-align: center;
     text-decoration: none;
     border-radius: 50%;
+}
+.list-inline-item a {
+    font-family: 'Lora', serif;
+    color: rgb(189, 7, 134);
 }
 /* Media Queries */
 /* larger container on xl screens */
