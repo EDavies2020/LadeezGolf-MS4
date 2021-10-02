@@ -1,0 +1,55 @@
+/* font-family: 'Lora', serif;
+font-family: 'Open Sans', sans-serif; */
+
+html {
+    height: 100%;
+}
+body {
+    background: url('/media/homepage3.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: calc(100vh - 164px);
+    color: #555;
+    font-family: 'Lora', serif !important;
+}
+.logo-font {
+    font-family: 'Lora', serif;
+    color: rgb(189, 7, 134);
+    text-transform: uppercase;
+}
+.main-logo-link {
+    width: fit-content;
+}
+.list-inline a {
+    font-family: 'Lora', serif;
+    color: rgb(189, 7, 134);
+}
+.shop-now-button {
+    background-color: white;
+    color:rgb(189, 7, 134);
+    min-width: 260px;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 50%;
+}
+/* Media Queries */
+/* larger container on xl screens */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 80%;
+    }
+}
+/* fixed navbar on medium screens & larger */
+@media (min-width: 992px) {
+    .fixed-top-desktop-ony {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 1030;
+    }
+
+    .header-container {
+        padding-top: 164px;
+    }
+}
