@@ -5,24 +5,35 @@
                 Refine By
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="refine-link">
-                <a href="" class="dropdown-item">By Price</a>
-                <a href="" class="dropdown-item ">By Rating</a>
-                <a href="" class="dropdown-item ">By Category</a>
+                <a href="{%  url 'products' %}?sort=price&direction=asc" class="dropdown-item">By Price (low to high)</a>
+                <a href="{%  url 'products' %}?sort=price&direction=desc" class="dropdown-item">By Price (high to low)</a>
+                <a href="{%  url 'products' %}?sort=category&direction=asc" class="dropdown-item ">By Category</a>
                 <a href="{%  url 'products' %}" class="dropdown-item">All Products</a>
             </div>
         </li>
 
         <li class="nav-item dropdown">
             <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="products-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Products
+                Golf Wear
+            </a>
+            <div class="dropdown-menu border-0" aria-labelledby="products-link">
+                <a href="{%  url 'products' %}?category=shoes" class="dropdown-item ">Shoes</a>
+                <a href="{%  url 'products' %}?category=clothing" class="dropdown-item">Clothing</a>
+                <a href="{%  url 'products' %}?category=accessories" class="dropdown-item">Accessories</a>
+                <a href="{%  url 'products' %}?category=clothing,shoes" class="dropdown-item">All Golf Wear</a>
+            </div>
+        </li>
+
+        <li class="nav-item dropdown">
+            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="products-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Golf Equiptment
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="products-link">
                 <a href="{% url 'products' %}?category=clubs" class="dropdown-item">Clubs</a>
-                <a href="{%  url 'products' %}?category=trolleys_bags" class="dropdown-item ">Trolleys & Bags</a>
-                <a href="{%  url 'products' %}?category=clothing" class="dropdown-item ">Clothing</a>
-                <a href="{%  url 'products' %}?category=shoes" class="dropdown-item ">Shoes</a>
-                <a href="{%  url 'products' %}?category=balls_accessories" class="dropdown-item">Balls & Accessories</a>
-                <a href="{%  url 'products' %}?category=clubs,clothing,trolleys_bags,shoes,balls_accessories" class="dropdown-item">All Products</a>
+                <a href="{%  url 'products' %}?category=trolleys" class="dropdown-item ">Trolleys</a>
+                <a href="{%  url 'products' %}?category=bags" class="dropdown-item">Bags</a>
+                <a href="{%  url 'products' %}?category=balls" class="dropdown-item">Balls</a>
+                <a href="{%  url 'products' %}?category=clubs,trolleys,bags,balls" class="dropdown-item">All Golf Equipment</a>
             </div>
         </li>
 
