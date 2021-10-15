@@ -67,6 +67,10 @@ body {
     background: rgb(228, 226, 226);
     z-index: -1;
 }
+a.category-badge > span.badge:hover {
+    background: #212529 !important;
+    color: #fff !important;
+}
 /* Media Queries */
 /* larger container on xl screens */
 @media (min-width: 1200px) {
