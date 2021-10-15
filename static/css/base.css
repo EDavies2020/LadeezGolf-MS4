@@ -1,16 +1,18 @@
-/* font-family: 'Lora', serif;
-font-family: 'Open Sans', sans-serif; */
+/* font-family: 'Gochi Hand', cursive;
+font-family: 'Recursive', sans-serif;
+font-family: 'Roboto Mono', monospace;
+font-family: 'Rock Salt', cursive; */
 
 html {
     height: 100%;
 }
 
 body {
-    background: url(/media/homepage2.jpg) no-repeat center center fixed;
+    background: url(/media/homepage3.jpg) no-repeat center center fixed;
     background-size: cover;
     height: calc(100vh - 164px);
     color: black;
-    font-family:'Lora', serif;
+    font-family:'Recursive', sans-serif;
 }
 
 /* From Bulma */
@@ -21,33 +23,41 @@ body {
     height: 1.5rem;
     width: 1.5rem;
 }
+#topnav {
+    background: white;
+    padding-bottom: 10px;
+}
 .logo-font {
-    font-family: 'Lora', serif;
-    color: rgb(189, 7, 134);
+    font-family: 'Rock Salt', cursive;
+    color: rgb(184, 33, 91);
     text-transform: uppercase;
+}
+#products-link, #news-link {
+    font-family:'Recursive', sans-serif;
+    font-size: 20px; 
 }
 .main-logo-link {
     width: fit-content;
 }
-.list-inline a {
-    font-family: 'Lora', serif;
-    color: rgb(189, 7, 134);
-}
-.hero-tex{
-    padding-top: 50px;
-}
 .shop-now-button {
+    font-family:'Recursive', sans-serif;
+    font-size: 30px;
     background-color: white;
-    color:rgb(189, 7, 134);
+    color:rgb(184, 33, 91);
     min-width: 260px;
-    padding: 20px;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 50%;
 }
-.list-inline-item a {
-    font-family: 'Lora', serif;
-    color: rgb(189, 7, 134);
+.btn-black {
+    background: #000;
+    color: white;
+}
+.shop-now-button:hover,
+.shop-now-button:active,
+.shop-now-button:focus,
+.btn-black:hover,
+.btn-black:active,
+.btn-black:focus {
+    background: #222;
+    color: white;
 }
 .text-black {
     color: #000 !important;
@@ -57,6 +67,20 @@ body {
 }
 .bg-black {
     background: #000 !important;
+}
+.bag-icon, .account-icon {
+    color:rgb(184, 33, 91);
+}
+.bag-text, .account-text {
+    font-family: 'Recursive', sans-serif;
+    color:black;
+    font-weight: bold;
+}
+#delivery-banner h4 {
+    font-family: 'Recursive', sans-serif;
+    border-top: solid 2px black;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 .overlay {
     height: 100%;
