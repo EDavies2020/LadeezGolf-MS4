@@ -37,7 +37,7 @@
                     </a>
                 </p>
                 {% endif %}
-                <p class="mt-3">{{ product.description }}</p>
+            
                 <form class="form" action="{% url 'add_to_bag' product.id %}" method="POST">
                     {% csrf_token %}
                     <div class="form-row">
@@ -90,6 +90,10 @@
                                     <span class="text-uppercase">Keep Shopping</span>
                                 </a>
                                 <input type="submit" class="btn btn-black rounded-0 text-uppercase mt-5" value="Add to Bag">
+                            </div>
+                            <div class="product_description">
+                                <h5>Product Description</h5>
+                                <p class="mt-3">{{ product.description }}</p>
                             </div>
                             <input type="hidden" name="redirect_url" value="{{ request.path }}">
                             {% endwith %}
