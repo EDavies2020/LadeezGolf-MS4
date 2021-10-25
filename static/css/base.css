@@ -6,7 +6,6 @@ font-family: 'Rock Salt', cursive; */
 html {
     height: 100%;
 }
-
 body {
     background: url(/media/homepage3.jpg) no-repeat center center fixed;
     background-size: cover;
@@ -14,8 +13,7 @@ body {
     color: black;
     font-family:'Recursive', sans-serif;
 }
-
-/* From Bulma */
+/*---------------------- From Bulma------------------------ */
 .icon  {
     align-items: center;
     display: inline-flex;
@@ -133,14 +131,58 @@ a.category-badge > span.badge:hover {
 .toast-capper {
     height: 2px
 }
-/* Media Queries */
-/* larger container on xl screens */
+/* from CSS-tricks.com: https://css-tricks.com/snippets/css/css-triangle/ */
+.arrow-up {
+    width: 0; 
+    height: 0; 
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent; 
+    border-bottom: 10px solid black;
+    position: absolute;
+    top: -10px;
+    right: 36px;
+}
+
+/* -------------------------- Convenience classes - colours  from Bootstrap -------------------------- */
+.arrow-primary {
+    border-bottom-color: #007bff !important;
+}
+.arrow-secondary {
+    border-bottom-color: #6c757d !important;
+}
+.arrow-success {
+    border-bottom-color: #28a745 !important;
+}
+.arrow-danger {
+    border-bottom-color: #dc3545 !important;
+}
+.arrow-warning {
+    border-bottom-color: #ffc107 !important;
+}
+.arrow-info {
+    border-bottom-color: #17a2b8 !important;
+}
+.arrow-light {
+    border-bottom-color: #f8f9fa !important;
+}
+.arrow-dark {
+    border-bottom-color: #343a40 !important;
+}
+.bag-notification-wrapper {
+    height: 100px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/* -------------------------Media Queries-------------------------- */
+
+/* -------larger container on xl screens --------*/
 @media (min-width: 1200px) {
     .container {
         max-width: 80%;
     }
 }
-/* fixed navbar on medium screens & larger */
+/* ------fixed navbar on medium screens & larger-------- */
 @media (min-width: 992px) {
     .fixed-top-desktop-ony {
         position: fixed;
@@ -154,7 +196,7 @@ a.category-badge > span.badge:hover {
         padding-top: 164px;
     }
 }
-/* pad the top a bit when navbar is collapsed on mobile */
+/* -------pad the top a bit when navbar is collapsed on mobile------- */
 @media (max-width: 991px) {
     .header-container {
         padding-top: 116px;
