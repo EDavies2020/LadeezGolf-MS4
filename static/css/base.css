@@ -40,6 +40,10 @@ body {
     color:rgb(184, 33, 91);
     min-width: 260px;
 }
+#add_to_bag {
+    background: rgb(184, 33, 91);
+    color: white;
+}
 .btn-black {
     background: #000;
     color: white;
@@ -52,7 +56,7 @@ body {
 .btn-outline-black:hover,
 .btn-outline-black:active,
 .btn-outline-black:focus {
-    background: black;
+    background: rgb(184, 33, 91);
     color: white !important;
 }
 .shop-now-button:hover,
@@ -61,7 +65,7 @@ body {
 .btn-black:hover,
 .btn-black:active,
 .btn-black:focus {
-    background: #222;
+    background: rgb(184, 33, 91);
     color: white;
 }
 .text-black {
@@ -100,9 +104,18 @@ a.category-badge > span.badge:hover {
     background: #212529 !important;
     color: #fff !important;
 }
+.product_name {
+    color: rgb(184, 33, 91);
+    font-size: 20px;
+    font-weight: bold;
+    padding-bottom: 30px;
+}
+.product_price {
+    padding-bottom: 20px;
+}
 .product_description {
     margin-top: 40px;
-    border: 1px solid black ;
+    border: 2px solid rgb(184, 33, 91) ;
     text-align: center;
     padding: 20px;
 }
