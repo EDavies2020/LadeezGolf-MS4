@@ -1,38 +1,78 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% load static %}
 
 {% block page_header %}
-    <div class="container header-container">
-        <div class="row">
-            <div class="col"></div>
-        </div>
-    </div>
+<div class="container header-container">
+  <div class="row">
+    <div class="col"></div>
+  </div>
+</div>
 {% endblock %}
 
 {% block content %}
 <div class="overlay"></div>
 <div class="container">
-    <div class="row">
-        <div class="col text-center">
-            <h2 class="page-heading">Womens Golf News</h2>
-        </div>
+  <div class="row">
+    <div class="col text-center">
+        <h2 class="page-heading">The rest of the story.....</h2>
     </div>
-        <!-- Blog Entries Column -->
-        <div class="blog-entry col-md-12">
-            <div class="card mb-4">
-                <div class="card-body">
-                    <h1>{% block title %} {{ object.title }} {% endblock title %}</h1>
-                    <p class="card-text ">{{ object.content | safe }}</p>
-                    <a href="{% url 'blog'  %}" class="go-back-button">Back to News</a>
-                </div>
-            </div>
+</div>
+  <div class="row" id="blog-row">
+    <div class="col-12 card mb-4  mt-3 left  top">
+      <div class="card-body">
+        <h2>{% block title %} {{ post.title }} {% endblock title %}</h2>
+        <p class=" text-muted">{{ post.created_on }}</p>
+        <p class="card-text ">{{ post.content | safe }}</p>
+        <a href="{% url 'blog' %}" class="go-back-button"><a href="{% url 'blog' %}" class="go-back-button"><i class="far fa-hand-point-left"></i> Take me back to News!</a>
+      </div>
+    </div>
+
+
+    <div class="col-md-12 card mb-4  mt-3 ">
+      <div class="card-body">
+        <!-- comments -->
+        <h2>{{ comments.count }} comments</h2>
+
+        {% if request.user.is_superuser %}
+        <small class="ml-3">
+          <a href="{% url 'edit_post' post.slug %}">Edit</a> |
+          <a class="text-danger" href="{% url 'delete_post' post.slug %}">Delete</a>
+        </small>
+        {% endif %}
+
+        {% for comment in comments %}
+        <div class="comments" style="padding: 10px;">
+          <p class="font-weight-bold">
+            {{ comment.name }} left a comment
+            <span class=" text-muted font-weight-normal">
+              on: {{ comment.created_on }}
+            </span>
+          </p>
+          {{ comment.body | linebreaks }}
         </div>
-</div>
-</div>
+        <hr>
+        {% endfor %}
 
+      </div>
+    </div>
+
+    {% if request.user.is_authenticated %}
+    <div class="col-md-8 card mb-4  mt-3 ">
+      <div class="card-body">
+        <h3>Leave a comment</h3>
+        <form method="post" style="margin-top: 1.3em;">
+          {{ comment_form | crispy }}
+          {% csrf_token %}
+          <button type="submit" class="btn leave-comment">Submit</button>
+        </form>
+      </div>
+    </div>
+    
+    {% else %}
+    <h5><a href="{% url 'account_login' %}"> Please sign in to leave a comment! </a></h5>
+    {% endif %}
+
+
+  </div>
+</div>
 {% endblock %}
-
-
-
-  
-
