@@ -255,58 +255,6 @@ Testing can be found here: [TESTING.md](TESTING.md)
 # Deployment <a name="Deployment"></a>
 
 
-## This project was deployed in Heroku using the following steps:
-
-1. Set up files the Heroku needs to run the app
-
-    * In your development terminal type : <b>"pip3 freeze --local > requirements.txt"</b>
-
-    This tells Heroku which applications and dependencies are required to run our app
-
-    * In your development terminal type : <b>"echo web: python app.py > Procfile"</b>
-
-    The Procfile is what Heroku looks for to know which file runs the app, and how to run it.
-
-    <b>Notes:</b>
-    Procfile has a capital 'P', and no file extension.
-    
-    The Procfile might add a blank line at the bottom, sometimes this can cause problems
-    when running the app in Heroku, so delete the line and save the file.
-
-    * Push both files to Github (git add, git commit & git push)
-
-2. Create Heroku App
-    * Go to [Heroku](https://heroku.com/) and create/log in to your dashboard
-    * Click on the 'New' button on the top right hand corner and select 'Create a New App'
-    * Name your App and choose your region
-        * Note: app must be unique, and generally use a 'dash' or 'minus' instead of spaces, and all lowercase letters.
-    * Click Create App
-
-3. Connect to App
-    * Deployment method: select 'Connect to Github'
-    * make sure you Github profile is displayed search for your repository name
-    * Once it finds you app click 'Connect'
-
-4. Securely tell Heroku which variables are required
-* Because the environment variables are hidden in the env.py file, Heroku won't be able to read those variables
-
-    * Click on the 'Settings' tab for your app, and then click on 'Reveal Config Vars'
-    * Make sure not to include any "quotes" for the key, or the value
-    * Complete the Config Vars with the information in the env.py file :
-
-![Image](static/images/readme/configvars.PNG)
-
-5. Enable automatic deployment
-    * Click on the 'Deploy' tab
-    * In Automatic deploys section click 'Enable Automatic Deploys'
-    * In Manual deploy section click 'Deploy Branch'
-    * Heroku will now receive the code from GitHub, and start building the app using the required packages
-    * Once it's finished, you'll get a message saying "Your app was successfully deployed."
-    * Click "View" to launch your new app
-
-The deployed site is now available and should automatically update whenever changes are pushed to the GitHub repository. <br>
-<br>
-When you log back into Heroku you can simply launch your app from your desktop view by selecting the 'Open App' button in the top right hand corner.
 
 
 [ Back to Table of Contents](#home)
@@ -315,18 +263,7 @@ When you log back into Heroku you can simply launch your app from your desktop v
 # Cloning <a name="Cloning"></a>
 
 
-### Cloning using GitHub: 
-* On GitHub, navigate to the main page of the repository
-* Above the list of files, click on the 'Code' button
 
-![Image](static/images/readme/codebutton.PNG) 
-
-* To clone the repository using HTTPS, under "Clone with HTTPS", click on the clipboard icon 
-* Open Git Bash
-* Change the current working directory to the location you want the clone saved
-* Type git clone, and then paste the URL you copied earlier and press enter to create your local clone
-
-![Image](static/images/readme/gfrecipesclone.PNG) 
 
 * When it shows as done your files will be cloned to your desktop
 
@@ -339,39 +276,26 @@ When you log back into Heroku you can simply launch your app from your desktop v
 
 ## Code
 
-* [w3schools](https://www.w3schools.com/) 
-    * Scroll to top button in the footer was created using tutorial from w3school
-    * Cut out welcome on homepage was created using tutorial from w3school
-    * Glow text feature on about us page was created using tutorial from w3school  
-
-* [Materialize](https://materializecss.com/)
-    * Used for recipe cards, register & login cards, add & edit forms, delete modals, navbar, side nav, footer, image slider 
+* [Blog Tutrial](https://djangocentral.com/building-a-blog-application-with-django/)
+    * News app was created using this tutorial
 
 * Code Institute
-    * Backend Development Module, Task Manager Mini Project
+    * Django Module, Boutique Ado Mini Project
 
 * Slack Community
     * Thread found on adding 404.html
-    * Thread found to help with deleting the correct modal when adding 'delete modal'
 
-## Content
-
-* [BBC Good food](https://www.bbcgoodfood.com/)
-    * All recipes were copied from BBC good food search: gluten free recipes
 
 ## Media
 
-* Images were all sourced from [unspalsh](https://unsplash.com/), [pixabay](https://pixabay.com/) 
-and [BBC Good food](https://www.bbcgoodfood.com/)
-
+* All images were sourced from the following sites: [unspalsh](https://unsplash.com/), [pixabay](https://pixabay.com/), [American Golf](https://www.americangolf.co.uk) and [Golf Online](https://www.golfonline.co.uk)
+* News images & stoies came from google searches for womens golf news
 
 ## Acknowledgements
 
 A big thank you to the following: 
 
-* Student support for arranging a break for me during a difficult time
-* Tutor support for helping me with a few issues I had during the Backend Development Module
-* My tutor, Spencer for his feedback
+* Tutor support for helping me with issues I had during the course/project
 * My wonderfully supportive family for being understanding when I am glued to my laptop for hours on end
 * The Slack community for sharing problems you come across and helpful fixes offered
 * The encouragement from other students Ive connected with during my time on the course, it is a great support network 
