@@ -1,0 +1,1 @@
+web: gunicorn ladeez_golf.wsgi:application
