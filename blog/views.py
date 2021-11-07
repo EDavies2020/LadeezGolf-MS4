@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, reverse, redirect
 from .models import Post
 from .forms import BlogForm, CommentForm
+from slugify import slugify
 
 
 class PostList(generic.ListView):
