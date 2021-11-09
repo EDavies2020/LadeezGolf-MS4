@@ -550,11 +550,10 @@ os.environ['DEVELOPMENT'] = 'True'
 A big thank you to the following: 
 
 * Tutor support for helping me with issues I had during the course/project
+* My mentor Spencer for his feedback and support
 * My wonderfully supportive family for being understanding when I am glued to my laptop for hours on end
 * The Slack community for sharing problems you come across and helpful fixes offered
 * The encouragement from other students Ive connected with during my time on the course, it is a great support network 
-
-
 
 
 [ Back to Table of Contents](#home)
