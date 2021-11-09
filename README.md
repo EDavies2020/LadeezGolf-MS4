@@ -1,9 +1,7 @@
-# Gluten Free Kids Website
+# Ladeez Golf Website
 
 
-![Image]()
-
-[View live project here]()
+[View live project here](https://edavies2020-ladeez-golf.herokuapp.com/)
 
 This website has been created for my full stack milestone project. 
 
@@ -15,7 +13,7 @@ The site created is a fictional e-commerce womens golf shop buisness, I chose th
 1. [Introduction](#Introduction)
 2. [User Experience (UX)](#UX)
 3. [Design](#Design)
-4. [Wireframes](#Wirefames)
+4. [Wireframes](#Wireframes)
 5. [Features](#Features)
 6. [Technologies Used](#Technologies)
 7. [Testing](#Testing)
@@ -254,6 +252,203 @@ Testing can be found here: [TESTING.md](TESTING.md)
 
 # Deployment <a name="Deployment"></a>
 
+- Create a Heroku account:
+    - Go to https://signup.heroku.com/login and create an account/login to your account
+    - From your dashboard click 'Create app'
+    - Create a name for your app and select the region closest to you
+    - Click 'Create app'
+
+- Set up Postgres database on app:
+    - Go to 'Resources' tab of Heroku app
+    - Search for 'Postgres'
+    - Add Postgres to the app, selecting to use the free development plan
+
+- Back in your gitpod workspace install the following:
+
+```
+pip3 install dj_database_url
+            
+pip3 install psycopg2_binary
+```       
+
+- Freeze new requirements:
+```
+pip3 freeze > requirements.txt
+```
+
+- Go to settings.py file and import dj_database_url
+```
+python
+import dj_database_url
+```
+    
+- Add Postgres database settings to settings.py
+    ``` python
+        DATABASES = {
+            'default': dj_database_url.parse('ENTER DATABASE URL FROM APP CONFIG SETTINGS HERE')
+        }
+    ```
+
+- Comment out settings for sqlite database
+- Migrate to new Postgres database
+    ``` 
+        python3 manage.py migrate
+    ```
+
+- Create a superuser:
+    ```
+        python3 manage.py createsuperuser
+    ```
+    
+    **Here I made the error of pushing to github without removing my Postgres Database URL. I fixed this by creating a completely new app and DB URL so that it wasn't pushed to Github at any stage**
+
+- Add the following statement to settings.py to use Postgres DB if available and sqlite DB if not:
+    ``` python
+        if "DATABASE_URL" in os.environ:
+            DATABASES = {
+                "default": dj_database_url.parse(os.environ.get('DATABASE_URL'))
+                }
+        else:
+            DATABASES = {
+                'default': {
+                    'ENGINE': 'django.db.backends.sqlite3',
+                    'NAME': BASE_DIR / 'db.sqlite3',
+                }
+            }
+    ```
+- Postgres database has now been set up.
+
+- To complete the Heroku set up we need to install gunicorn and add it to a Procfile as shown:
+    ```
+        pip3 install Gunicorn
+    ```
+- In Procfile:
+    ```
+        web: gunicorn dulwich_interiors.wsgi:application
+    ```
+
+- Log into Heroku through your workspace termnial:
+    ```
+        heroku login -i
+    ```
+
+- Disable static file collection for now
+    ```
+        heroku config:set DISABLE_COLLECTSTATIC=1 --app <insert Heroku app name here>
+    ```
+        
+- In settings.py add:
+    ``` python
+        ALLOWED_HOSTS = ['dulwich-interiors-ms4.herokuapp.com', 'localhost']
+    ```
+- Add and commit changes to github
+- Push to Heroku
+    ```
+        heroku git:remote -a <dulwich-interiors-ms4>
+        git push heroku master
+    ```
+
+- Enable automatic deploys to heroku
+        - Go to setting tab of Heroku app
+        - Click 'Connect to Github' and search for respository
+        - Select repository
+        - Click 'Enable automatic deploys'
+
+## Setting up AWS to host static files & images:
+- Go to https://aws.amazon.com/ and create an account
+- Go to the AWS Management Console from within your account, and search for 'S3'
+- Access S3 and create a new bucket by selecting 'Create bucket'
+- Name bucket 'dulwich-interiors-ms4' and select nearest region
+- Uncheck box that says 'Block all public access' and tick box to acknowledge that the bucket will be public.
+- When bucket is created, go to 'Properties' tab and turn on static website hosting, selecting the option to 'Use this bucket to host a website'
+- Go to 'Permissions' tab and then 'CORS' configuration tab and add the following code:
+``` [
+  {
+      "AllowedHeaders": [
+          "Authorization"
+      ],
+      "AllowedMethods": [
+          "GET"
+      ],
+      "AllowedOrigins": [
+          "*"
+      ],
+      "ExposeHeaders": []
+  }
+]
+```
+- Go to 'Bucket Policy' tab and select 'Policy Generator' - This will lead to a AWS Policy Generator page. On this page select 'S3' Bucket as the Policy Type, set the 'Principal' input to '*' and the Action dropdown to 'GetObject'
+- Go back to 'Bucket Policy' tab and copy the ARN. Paste into ARN box on AWS Policy Generator page
+- Select to 'Generate Policy' and then copy the policy into the 'Bucket Policy' editor. Add a '/*' onto the end of the 'Resource' key before saving
+- Go to 'Access Control' tab and select 'Everyone' under the Public Acces heading - Then set the 'List actions' box and save. Bucket is now set up.
+- Go back to AWS Services menu and search for IAM
+- Select 'Groups' and then 'Create a new group' called 'manage-dulwich-interiors'
+- Create a policy by selecting 'Policies' from the navbar and then 'Create policy'. Go to JSON tab and select 'Import managed policy'. Import the policy named 'S3 full access policy'
+- Go back to bucket and copy the ARN, paste into 'Resource' key of JSON code
+- Click 'Review policy', give the policy a name and a description and 'Create policy'
+- Attach the policy to the group we created: Go to 'Groups' and select the group just created. Click 'Attach policy' and search for the policy just created 
+- Create a user for the group: Go to 'Users' page and 'Add user'. Create user called 'manage-dulwich-interiors' and give them Programatic Access
+- Add the user to the group just created
+- Click 'Create User' and download the excel file that is created 
+- Connect Django to s3 by installing two new packages:
+```
+pip3 install boto3
+pip3 install django-storages
+```
+- Freeze these requirements:
+``` 
+pip3 freeze > requirements.txt
+```
+- Go to installed apps in 'settings.py' file and add 'storages',
+- Also in settings.py add:
+```
+if 'USE_AWS' in os.environ:
+    AWS_STORAGE_BUCKET_NAME = 'dulwich-interiors-ms4'
+    AWS_S3_REGION_NAME = 'eu-west-2'
+    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+```
+- Go to the settings tab of Heroku app and select 'Reveal config variables'. Add the following config variables:
+    - AWS_ACCESS_KEY_ID: (Get value from excel file)
+    - AWS_SECRET_ACCESS_KEY: (Get value from excel file)
+    - USE_AWS: True
+- Delete the 'DISABLE_COLLECTSTATIC' variable
+- Go to settings.py file, add:
+```
+AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+```
+- Create a project level file named 'custom_storages.py' and add:
+```
+from django.conf import settings
+from storages.backends.s3boto3 import S3Boto3Storage
+
+
+class StaticStorage(S3Boto3Storage):
+    location = settings.STATICFILES_LOCATION
+
+
+class MediaStorage(S3Boto3Storage):
+    location = settings.MEDIAFILES_LOCATION
+```
+- Go back to settings.py and add:
+```
+STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+STATICFILES_LOCATION = 'static'
+DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+MEDIAFILES_LOCATION = 'media'
+
+STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
+MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
+```
+- Add, commit and push these changes
+- To settings.py add:
+```
+AWS_S3_OBJECT_PARAMETERS = {
+        'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
+        'CacheControl': 'max-age=94608000',
+    }
+```
+- Go to s3 and create a folder called 'Media'. Upload product images to this file. Make sure to select to 'Grant public read access to these objects' before selecting to upload
 
 
 
@@ -262,10 +457,66 @@ Testing can be found here: [TESTING.md](TESTING.md)
 
 # Cloning <a name="Cloning"></a>
 
+If you wish to clone a copy of my project you will need to:
 
+- Navigate to my GitHub [repository](https://github.com/EDavies2020/LadeezGolf-MS4)
 
+- Click the `Code` button next to the Green Gitpod button
 
-* When it shows as done your files will be cloned to your desktop
+- In your terminal type:
+
+```
+git clone (paste HTTPS link from above)
+```
+
+- Install the modules listed in the requirements.txt file using the following in the terminal:
+
+```
+python -m pip -r requirements.txt
+```
+
+- Install the JSON files using: 
+
+```
+python manage.py loaddata categories
+```  
+and: 
+```
+python manage.py loaddata products
+``` 
+- Make sure its in this order as "products" contains categories
+
+- Create a SuperUser by using: 
+```
+python manage.py createsuperuser
+``` 
+- Follow the instructions to create a username and password
+
+- Run migrations to create your database by using: 
+```
+python manage.py migrate
+```
+
+- Create a env.py file with the following information:
+
+```
+import os
+
+os.environ ['AWS_ACCESS_KEY_ID'] = 'from Amazon AWS'
+os.environ ['AWS_SECRET_ACCESS_KEY'] = 'from Amazon AWS'
+os.environ ['DATABASE_URL'] = 'from Amazon AWS'
+os.environ ['EMAIL_HOST_PASS'] = 'from email host(gmail)'
+os.environ ['EMAIL_HOST_USER'] = 'from email host(gmail)'
+os.environ ['SECRET_KEY'] = 'Secret key here'
+os.environ ['STRIPE_PUBLIC_KEY'] = 'from Stripe'
+os.environ ['STRIPE_SECRET_KEY'] = 'from Stipe'
+os.environ ['STRIPE_WH_SECRET'] = 'from Stripe'
+os.environ ['USE_AWS'] = 'True'
+os.environ['DEVELOPMENT'] = 'True'
+
+```
+- The app can now be run locally by typing python manage.py runserver 
+
 
 
 [ Back to Table of Contents](#home)

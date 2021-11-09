@@ -22,7 +22,7 @@
       <div class="card-body">
         <h2>{% block title %} {{ post.title }} {% endblock title %}</h2>
         <p class=" text-muted">{{ post.created_on }}</p>
-        <p class="card-text ">{{ post.content | safe }}</p>
+        <p class="card-text" style="white-space: pre-wrap">{{ post.content | safe }}</p>
         <a href="{% url 'blog' %}" class="go-back-button"><a href="{% url 'blog' %}" class="go-back-button"><i class="far fa-hand-point-left"></i> Take me back to News!</a>
       </div>
     </div>
