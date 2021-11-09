@@ -278,88 +278,84 @@ pip3 freeze > requirements.txt
 
 - Go to settings.py file and import dj_database_url
 ```
-python
 import dj_database_url
 ```
     
 - Add Postgres database settings to settings.py
-    ``` python
-        DATABASES = {
-            'default': dj_database_url.parse('ENTER DATABASE URL FROM APP CONFIG SETTINGS HERE')
-        }
-    ```
+```
+DATABASES = {
+    'default': dj_database_url.parse('ENTER DATABASE URL HERE')
+    }
+```
 
 - Comment out settings for sqlite database
-- Migrate to new Postgres database
-    ``` 
-        python3 manage.py migrate
-    ```
+- Migrate Postgres database
+``` 
+python3 manage.py migrate
+```
 
 - Create a superuser:
-    ```
-        python3 manage.py createsuperuser
-    ```
-    
-    **Here I made the error of pushing to github without removing my Postgres Database URL. I fixed this by creating a completely new app and DB URL so that it wasn't pushed to Github at any stage**
+```
+python3 manage.py createsuperuser
+```
 
-- Add the following statement to settings.py to use Postgres DB if available and sqlite DB if not:
-    ``` python
-        if "DATABASE_URL" in os.environ:
-            DATABASES = {
-                "default": dj_database_url.parse(os.environ.get('DATABASE_URL'))
-                }
-        else:
-            DATABASES = {
-                'default': {
-                    'ENGINE': 'django.db.backends.sqlite3',
-                    'NAME': BASE_DIR / 'db.sqlite3',
-                }
-            }
-    ```
-- Postgres database has now been set up.
+- Add the following if statement to settings.py to use Postgres DB if available:
+```
+if 'DATABASE_URL' in os.environ:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+    }
 
-- To complete the Heroku set up we need to install gunicorn and add it to a Procfile as shown:
-    ```
-        pip3 install Gunicorn
-    ```
-- In Procfile:
-    ```
-        web: gunicorn dulwich_interiors.wsgi:application
-    ```
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+```
+- To complete the Heroku set up install gunicorn and add to requirements.txt:
+```
+pip3 install Gunicorn
+pip3 freeze > requirements.txt
+```
+- Create a Procfile file, and add the following:
+```
+web: gunicorn dulwich_interiors.wsgi:application
+```
 
-- Log into Heroku through your workspace termnial:
-    ```
-        heroku login -i
-    ```
+- Log into Heroku from your workspace termnial:
+```
+heroku login -i
+```
 
-- Disable static file collection for now
-    ```
-        heroku config:set DISABLE_COLLECTSTATIC=1 --app <insert Heroku app name here>
-    ```
+- Next, disable static file
+```
+heroku config:set DISABLE_COLLECTSTATIC=1 --app <insert Heroku app name here>
+```
         
-- In settings.py add:
-    ``` python
-        ALLOWED_HOSTS = ['dulwich-interiors-ms4.herokuapp.com', 'localhost']
-    ```
-- Add and commit changes to github
-- Push to Heroku
-    ```
-        heroku git:remote -a <dulwich-interiors-ms4>
-        git push heroku master
-    ```
+- back to settings.py, add:
+```
+ALLOWED_HOSTS = ['edavies-ladeez-golf.herokuapp.com', 'localhost']
+```
+- git add and git commit changes to github
+- git push changes to Heroku
+```
+git push heroku masin
+```
 
-- Enable automatic deploys to heroku
-        - Go to setting tab of Heroku app
-        - Click 'Connect to Github' and search for respository
-        - Select repository
-        - Click 'Enable automatic deploys'
+- Back in Heroku, enable automatic deployment:
+    - Go to setting tab of Heroku app
+    - Click 'Connect to Github' and search the respository
+    - Select the relevant repository
+    - Click 'Enable automatic deploys'
 
-## Setting up AWS to host static files & images:
+## Setting up AWS to host static and media files:
 - Go to https://aws.amazon.com/ and create an account
-- Go to the AWS Management Console from within your account, and search for 'S3'
+- Go to the AWS Management Console and search for 'S3'
 - Access S3 and create a new bucket by selecting 'Create bucket'
-- Name bucket 'dulwich-interiors-ms4' and select nearest region
-- Uncheck box that says 'Block all public access' and tick box to acknowledge that the bucket will be public.
+- Name bucket and select nearest region
+- Uncheck box that says 'Block all public access' and check the box to acknowledge that the bucket will be public
 - When bucket is created, go to 'Properties' tab and turn on static website hosting, selecting the option to 'Use this bucket to host a website'
 - Go to 'Permissions' tab and then 'CORS' configuration tab and add the following code:
 ``` [
@@ -377,43 +373,48 @@ import dj_database_url
   }
 ]
 ```
-- Go to 'Bucket Policy' tab and select 'Policy Generator' - This will lead to a AWS Policy Generator page. On this page select 'S3' Bucket as the Policy Type, set the 'Principal' input to '*' and the Action dropdown to 'GetObject'
-- Go back to 'Bucket Policy' tab and copy the ARN. Paste into ARN box on AWS Policy Generator page
-- Select to 'Generate Policy' and then copy the policy into the 'Bucket Policy' editor. Add a '/*' onto the end of the 'Resource' key before saving
-- Go to 'Access Control' tab and select 'Everyone' under the Public Acces heading - Then set the 'List actions' box and save. Bucket is now set up.
+- Go to 'Bucket Policy' tab and select 'Policy Generator' 
+- On the Policy Generator page: select 'S3' Bucket as the Policy Type, set the 'Principal' input to '*' and the Action dropdown to 'GetObject'
+- Back in the 'Bucket Policy' tab, copy the ARN and paste into ARN box on the AWS Policy Generator page
+- Select to 'Generate Policy' and then copy the policy into the 'Bucket Policy' editor 
+- Add a '/*' onto the end of the 'Resource' key and save changes
+- Go to 'Access Control' tab and select 'Everyone' under the Public Acces heading 
+- Set the 'List actions' box and save: Your Bucket is now set up
 - Go back to AWS Services menu and search for IAM
-- Select 'Groups' and then 'Create a new group' called 'manage-dulwich-interiors'
-- Create a policy by selecting 'Policies' from the navbar and then 'Create policy'. Go to JSON tab and select 'Import managed policy'. Import the policy named 'S3 full access policy'
-- Go back to bucket and copy the ARN, paste into 'Resource' key of JSON code
-- Click 'Review policy', give the policy a name and a description and 'Create policy'
-- Attach the policy to the group we created: Go to 'Groups' and select the group just created. Click 'Attach policy' and search for the policy just created 
-- Create a user for the group: Go to 'Users' page and 'Add user'. Create user called 'manage-dulwich-interiors' and give them Programatic Access
+- Select 'Groups' and then 'Create a new group' called 'manage-ladeez-golf'
+- Create a policy by selecting 'Policies' from the navbar and then 'Create policy' 
+- Go to JSON tab and select 'Import managed policy' then import the policy named 'S3 full access policy'
+- Go back to bucket, copy the ARN and paste into 'Resource' key of JSON code
+- Click 'Review policy', give the policy an appropriate name and a description and 'Create policy'
+- Attach the policy to the group you just created: Click 'Attach policy' and attach the policy just created 
+- Create a user for the group: Go to 'Users' page and 'Add user' 
+- Create user called 'manage-ladeez-golf' and give them Programatic Access
 - Add the user to the group just created
 - Click 'Create User' and download the excel file that is created 
-- Connect Django to s3 by installing two new packages:
+- Connect s3 to Django by installing two new packages back in your workspace terminal:
 ```
 pip3 install boto3
 pip3 install django-storages
 ```
-- Freeze these requirements:
+- Freeze requirements.txt:
 ``` 
 pip3 freeze > requirements.txt
 ```
-- Go to installed apps in 'settings.py' file and add 'storages',
-- Also in settings.py add:
+- Go to installed apps in 'settings.py' file and add 'storages'
+- In settings.py add:
 ```
 if 'USE_AWS' in os.environ:
-    AWS_STORAGE_BUCKET_NAME = 'dulwich-interiors-ms4'
+    AWS_STORAGE_BUCKET_NAME = 'edavies2020-ladeez-golf'
     AWS_S3_REGION_NAME = 'eu-west-2'
     AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 ```
-- Go to the settings tab of Heroku app and select 'Reveal config variables'. Add the following config variables:
+- Go to the settings tab of Heroku app and select 'Reveal config vars' and add the following:
     - AWS_ACCESS_KEY_ID: (Get value from excel file)
     - AWS_SECRET_ACCESS_KEY: (Get value from excel file)
     - USE_AWS: True
 - Delete the 'DISABLE_COLLECTSTATIC' variable
-- Go to settings.py file, add:
+- Go back to settings.py file and add:
 ```
 AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
 ```
@@ -440,15 +441,17 @@ MEDIAFILES_LOCATION = 'media'
 STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
 MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
 ```
-- Add, commit and push these changes
-- To settings.py add:
+- git add, git commit and git push changes
+- Back to settings.py, and add:
 ```
 AWS_S3_OBJECT_PARAMETERS = {
         'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
         'CacheControl': 'max-age=94608000',
     }
 ```
-- Go to s3 and create a folder called 'Media'. Upload product images to this file. Make sure to select to 'Grant public read access to these objects' before selecting to upload
+- Go to s3 and create a folder called 'Media' 
+- Upload all images used to this file 
+- Ensure you select 'Grant public read access to these objects' before uploading
 
 
 
