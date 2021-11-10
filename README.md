@@ -8,20 +8,26 @@ This website has been created for my full stack milestone project.
 The site created is a fictional e-commerce womens golf shop buisness, I chose this as a female golfer myself. Customers can browe products and purchase if they choose to do so. They can set up an account and follow female golf news.
 
 
+
 # Table of Contents <a name="home"></a>
+
+
 
 1. [Introduction](#Introduction)
 2. [User Experience (UX)](#UX)
 3. [Design](#Design)
-4. [Wireframes](#Wireframes)
 5. [Features](#Features)
 6. [Technologies Used](#Technologies)
 7. [Testing](#Testing)
+8. [Database Design](#Database)
 8. [Deployment](#Deployment)
 9. [Cloning Repository](#Cloning)
 10. [Credits](#Credits)
 
+
+
 # Introduction <a name="introduction"></a>
+
 
 
 ## Website Purpose :
@@ -34,7 +40,9 @@ The site created is a fictional e-commerce womens golf shop buisness, I chose th
 [ Back to Table of Contents](#home)
 
 
+
 # User Experience (UX) <a name="UX"></a>
+
 
 
 ## As a Developer:
@@ -66,18 +74,9 @@ The site created is a fictional e-commerce womens golf shop buisness, I chose th
 [ Back to Table of Contents](#home)
 
 
-# Wireframes <a name="Wireframes"></a>
-
-
-* Homepage 
-* Products Page 
-* New page
-
-
-[ Back to Table of Contents](#home)
-
 
 # Design <a name="Design"></a>
+
 
 
 ## Colours:
@@ -101,7 +100,9 @@ The site created is a fictional e-commerce womens golf shop buisness, I chose th
 [ Back to Table of Contents](#home)
 
 
+
 # Features <a name="Features"></a>
+
 
 
 ## Navbar/Footer
@@ -204,7 +205,9 @@ The site created is a fictional e-commerce womens golf shop buisness, I chose th
 [ Back to Table of Contents](#home)
 
 
+
 # Technologies <a name="Technologies"></a>
+
 
 
 1. Languages used: HTML5, CSS3, JQuery, Javascript,  Python and Jinja and Django framework was used to build the application
@@ -241,16 +244,34 @@ The site created is a fictional e-commerce womens golf shop buisness, I chose th
 [ Back to Table of Contents](#home)
 
 
+
 # Testing <a name="Testing"></a>
+
 
 
 Testing can be found here: [TESTING.md](TESTING.md)
 
 
+
 [ Back to Table of Contents](#home)
 
 
+
+# Database Design <a name="Database"></a>
+
+
+
+![Image](media/DataSchema.PNG)
+
+
+
+[ Back to Table of Contents](#home)
+
+
+
 # Deployment <a name="Deployment"></a>
+
+
 
 - Create a Heroku account:
     - Go to https://signup.heroku.com/login and create an account/login to your account
@@ -458,7 +479,10 @@ AWS_S3_OBJECT_PARAMETERS = {
 [ Back to Table of Contents](#home)
 
 
+
 # Cloning <a name="Cloning"></a>
+
+
 
 If you wish to clone a copy of my project you will need to:
 
@@ -525,7 +549,9 @@ os.environ['DEVELOPMENT'] = 'True'
 [ Back to Table of Contents](#home)
 
 
+
 # Credits <a name="Credits"></a>
+
 
 
 ## Code
