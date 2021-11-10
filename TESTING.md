@@ -1,13 +1,25 @@
 # Testing
 
 # Table of Contents <a name="home"></a>
-1. [Validation Services](#validation)
-2. [Errors/Warnings HTML](#html)
-3. [Errors/Warnings CSS](#css)
-4. [Errors/Warnings JS Hint](#js)
-5. [Errors/Warnings PEP8](#pep8)
-6. [Testing User Experience (UX)](#ux)
-7. [Manual Testing](#manual)
+1. [Super User Details](#superuser)
+2. [Validation Services](#validation)
+3. [Errors/Warnings HTML](#html)
+4. [Errors/Warnings CSS](#css)
+5. [Errors/Warnings JS Hint](#js)
+6. [Errors/Warnings PEP8](#pep8)
+7. [Testing User Experience (UX)](#ux)
+8. [Manual Testing](#manual)
+
+
+
+# Super User Details <a name="superuser"></a>
+
+
+Here are the superuser details for Ladeez Golf:
+
+* username: emmad
+* email: emmad@ladeezgolf.com
+* password: CImilestone4
 
 
 
@@ -30,7 +42,7 @@
 # Errors/Warnings HTML <a name="html"></a>
 
 
-* Stray </a> tags found - Resolved
+* Stray </a> tags found - Resolved by removing stray tags
 
 
 [Back to Testing](TESTING.md)
@@ -40,9 +52,9 @@
 # Errors/Warnings CSS <a name="css"></a>
 
 
-* number missing unit - Resolved
-* pm changed to px - Resolved
-* solis changed to solid - Resolved
+* number missing unit - Resolved by adding px to number
+* pm not recognised - Resolved by changing typo to px
+* solis not recognised - Resolved by changing typo to solid
 
 
 [Back to Testing](TESTING.md)
@@ -52,7 +64,7 @@
 # Errors/Warnings JS Hint <a name="js"></a>
 
 
-* 2 missing semi colons added - Resolved
+* 2 missing semi colons added - Resolved by adding missing semi colons
 
 
 # Errors/Warnings PEP8 <a name="pep8"></a>
@@ -60,11 +72,11 @@
 
 PEP8 showed a number of errors with length, white space and indentation. 
 
-These have all been resolved.
+These have all been resolved by amending the length, removing white space amd correctly indenting code.
 
-I had an issue when resolving PEP8 issues which meant that making lines shorter broke my webpage. 
+I had an issue after resolving PEP8 issues which meant that making lines shorter broke my webpage. 
 
-I contacted tutor support and Sean helped me resolve the issue, this did mean some of my code isnt pep8 compliant in terms of length which I understood from Sean is okay:
+I contacted tutor support and Sean helped me resolve the issue, this did mean some of my code isnt pep8 compliant in terms of length which I understand from Sean is okay according to python rules:
 
 ![Image](media/tutormessage.jpg)
 
@@ -118,5 +130,27 @@ I contacted tutor support and Sean helped me resolve the issue, this did mean so
     - Users can leave their comments on News stories
 
 
-
 [Back to Testing](TESTING.md)
+
+# Manual Testing <a name="manual"></a>
+
+
+* Clicking logo takes user back to homepage
+* Search bar tested using words in single/multiple items titles and descriptions and ensure it is returned to the user
+* User icon tested to ensure that it reveals the correct dropdown for a user is logged in / logged out / logged in as superuser
+    * If user is not logged in the dropdown reveals 'Register' and 'Login'
+
+    
+If user is logged in the dropdown has two options 'Logout' and 'Profile'
+If user is logged in as superuser dropdown has options to 'Add a product', 'Add a blog post', 'Profile' and 'Logout'
+All dropdown items were tested to ensure the user is brought to the correct page
+Test cart icon to ensure it leads to the users Shopping Cart page
+Test navigation links
+'All Products' link leads to the Products page, displaying all products in all categories
+'Shop by Room' dropdown gives users four options, allowing them to filter products by their room (category). Each option from dropdown leads the user to a page that only shows products in that room
+'News' link leads the user to the news/blog page of the site
+Navbar responsiveness was tested across small, medium, large and extra large screen sizes using Google Chrome dev tools
+
+
+
+[ Back to Table of Contents](#home)
