@@ -135,21 +135,115 @@ I contacted tutor support and Sean helped me resolve the issue, this did mean so
 # Manual Testing <a name="manual"></a>
 
 
+# Navbar
+
+
 * Clicking logo takes user back to homepage
 * Search bar tested using words in single/multiple items titles and descriptions and ensure it is returned to the user
 * User icon tested to ensure that it reveals the correct dropdown for a user is logged in / logged out / logged in as superuser
     * If user is not logged in the dropdown reveals 'Register' and 'Login'
+    * If user is logged in the dropdown has two options 'My Profile' and 'Logout'
+    * If superuser is logged in the dropdown has the following options: 'Product Management', 'News Management', 'My Profile' and 'Logout'
+* Clicking the bag icon takes the user to the shopping bag
+    * The user is advised if the shopping bag is empty
+    * If there are items added to the bag they are displayed
+* All dropdown items were tested to ensure the user is taken to the correct pages
 
-    
-If user is logged in the dropdown has two options 'Logout' and 'Profile'
-If user is logged in as superuser dropdown has options to 'Add a product', 'Add a blog post', 'Profile' and 'Logout'
-All dropdown items were tested to ensure the user is brought to the correct page
-Test cart icon to ensure it leads to the users Shopping Cart page
-Test navigation links
-'All Products' link leads to the Products page, displaying all products in all categories
-'Shop by Room' dropdown gives users four options, allowing them to filter products by their room (category). Each option from dropdown leads the user to a page that only shows products in that room
-'News' link leads the user to the news/blog page of the site
-Navbar responsiveness was tested across small, medium, large and extra large screen sizes using Google Chrome dev tools
+
+# Footer
+
+
+* The social media links all open correctly in a new tab
+* As the site is fictional the user is taken to the generic social media site
+
+# Homepage
+
+
+* Shop Now button takes user to All Products Page
+
+
+# Registering / logging in / logging out
+
+
+* Registering
+    * Clicking on the User icon above 'My Account' and selecting the Register option takes the user to the registration page
+    * All form elements let the user know if they are completed incorrectly 
+    * Submitting the form: an email is sent to the user with a link to follow to verify their email address
+    * Clicking on the link: the user is brought back to the site and asked to 'Confirm' 
+    * Clicking the 'Confirm' button the user is brought to the sign in page to sign in using the username and password just created
+
+* Logging in
+    * Clicking on the User icon above 'My Account' and selecting the Login option takes the user to the sign in page
+    * The users are notified if they use an incorrect username/password
+    * If correct username/password match the user is directed to the homepage and notified their log in was successful
+
+* Logging out
+    * Clicking on the User icon above 'My Account' and selecting the Logout option takes the user to the sign out page 
+    * Clicking cancel takes the user to the homepage
+    * Clicking sign out takes the user to the homepage and notifies them they have logged out
+
+
+# Products Page
+
+
+*Clicking on the product image takes the user to the product details page
+
+
+# Product details page
+
+
+* The user cannot change the quantity below 1 but can increase the quantity
+* The keep shopping button takes the user back to the products page
+* The add to bag button adds the product to the bag, a mini shopping bag appears top right
+* Clicking on the product image opens the picture in a new tab
+
+
+# Shopping Bag
+
+
+* Clicking the bag icon when there are no items in the bag: 
+    * The user is notified the bag is empty and the 'Keep shopping' button takes the user back to the products page
+* Clicking the bag icon when there are items in the bag:
+    * The user can change and update the quanity
+    * The user can remove the item from the bag
+* The secure checkout button takes the user to the checout page
+
+
+# Checkout
+
+
+* The user needs to complete the shipping details - the user is prompted to complete any fields left empty
+* If the user leaves the card details blank the user is advised the card details are incomplete
+* The adjust bag takes the user back to the shopping bag
+* When all details are correct, the checkout button is clicked and a timer is displayed to show the user payment is being processed
+* The user is directed to an order confirmation page which displays all the order details 
+* The back to shop button directs the user back to the products page
+
+
+# Profile Page
+
+
+* The user change their address details and the update button saves the changes
+* The users order history summary is displayed and clicking on the order number takes the user to the full order details
+* In the full order page the back to profile button takes the user back to the users profile page
+
+
+# News Page
+
+
+* Clicking on the News link and selecting womens new takes the user to the news pages
+* Clicking on the read more hand icon takes the user to the full story
+* Clicking on the take me back to news hand icon takes the user back to the story summaries
+* In the full story the user can add a comment to the news story:
+    * If user is logged out no form diplays and there is a note to log in to add a comment
+    * When logged in the user can add a comment to the news story
+    * The user is prompted to complete empty fields when clicking submit
+    * When all fields are complete the users comment is posted 
+
+
+# Superuser functions
+
+
 
 
 
