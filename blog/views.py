@@ -85,7 +85,7 @@ def edit_post(request, slug):
         if form.is_valid():
             form.save()
             messages.success(request, 'Successfully edited blog post!')
-            return redirect(reverse('post_detail', args=[post.slug]))
+            return redirect(reverse('blog'))
         else:
             messages.error(request, 'Failed to edit blog post.'
                            'Please ensure the form is valid.')

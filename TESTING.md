@@ -261,14 +261,13 @@ I contacted tutor support and Sean helped me resolve the issue, this did mean so
     * Clicking on the User icon above 'My Account', selecting the News Management option takes the superuer to the add news page
     * If any field on the add news form is left blank the user is prompted to complete the missing fied on the form
     * Clicking cancel takes the user to the womens golf news page
-    * Click add product takes the user to the product page for the added product
-* Edit a product
-    * Clicking edit from the product page directs the user to the edit product page
-    * Clicking on the cancel option on the edit product page takes the user back to products page
-    * Ticking the remove image box on the edit product page and then clicking the update button removes the image
-    * Changing details on the edit product page and then clicking the update button updates the details/image and takes the user to the product details page
-* Delete a product
-    * Clicking on the delete option removes the product completely and takes the user back to the products page
+    * Clicking add post takes the user to the womens golf news page and the new story is at the top
+* Edit a news story
+    * Clicking edit from the womens golf news page directs the user to the edit news page
+    * Clicking on the cancel option on the edit news page takes the user back to womens golf news page
+    * Changing details on the edit product page and then clicking the update button updates the details and takes the user to the womens golf news page
+* Delete a news story
+    * Clicking on the delete option removes the news post completely and takes the user back to the womens golf news page
 
 
 [ Back to Table of Contents](#home)
