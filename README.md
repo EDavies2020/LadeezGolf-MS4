@@ -556,14 +556,14 @@ os.environ['DEVELOPMENT'] = 'True'
 
 ## Code
 
+* Code Institute
+    * Django Module, Boutique Ado Mini Project
+    
 * [Blog Tutrial](https://djangocentral.com/building-a-blog-application-with-django/)
     * News app was created using this tutorial
 
-* Code Institute
-    * Django Module, Boutique Ado Mini Project
-
-* Slack Community
-    * Thread found on adding 404.html
+* [404 Tutorial](https://levelup.gitconnected.com/django-customize-404-error-page-72c6b6277317)
+    * Tutorial for adding 404 page
 
 
 ## Media
