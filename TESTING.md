@@ -135,7 +135,7 @@ I contacted tutor support and Sean helped me resolve the issue, this did mean so
 # Manual Testing <a name="manual"></a>
 
 
-# Navbar
+## Navbar
 
 
 * Clicking logo takes user back to homepage
@@ -150,19 +150,19 @@ I contacted tutor support and Sean helped me resolve the issue, this did mean so
 * All dropdown items were tested to ensure the user is taken to the correct pages
 
 
-# Footer
+## Footer
 
 
 * The social media links all open correctly in a new tab
 * As the site is fictional the user is taken to the generic social media site
 
-# Homepage
+## Homepage
 
 
 * Shop Now button takes user to All Products Page
 
 
-# Registering / logging in / logging out
+## Registering / logging in / logging out
 
 
 * Registering
@@ -183,13 +183,13 @@ I contacted tutor support and Sean helped me resolve the issue, this did mean so
     * Clicking sign out takes the user to the homepage and notifies them they have logged out
 
 
-# Products Page
+## Products Page
 
 
 *Clicking on the product image takes the user to the product details page
 
 
-# Product details page
+## Product details page
 
 
 * The user cannot change the quantity below 1 but can increase the quantity
@@ -198,7 +198,7 @@ I contacted tutor support and Sean helped me resolve the issue, this did mean so
 * Clicking on the product image opens the picture in a new tab
 
 
-# Shopping Bag
+## Shopping Bag
 
 
 * Clicking the bag icon when there are no items in the bag: 
@@ -209,7 +209,7 @@ I contacted tutor support and Sean helped me resolve the issue, this did mean so
 * The secure checkout button takes the user to the checout page
 
 
-# Checkout
+## Checkout
 
 
 * The user needs to complete the shipping details - the user is prompted to complete any fields left empty
@@ -220,7 +220,7 @@ I contacted tutor support and Sean helped me resolve the issue, this did mean so
 * The back to shop button directs the user back to the products page
 
 
-# Profile Page
+## Profile Page
 
 
 * The user change their address details and the update button saves the changes
@@ -228,7 +228,7 @@ I contacted tutor support and Sean helped me resolve the issue, this did mean so
 * In the full order page the back to profile button takes the user back to the users profile page
 
 
-# News Page
+## News Page
 
 
 * Clicking on the News link and selecting womens new takes the user to the news pages
@@ -241,10 +241,34 @@ I contacted tutor support and Sean helped me resolve the issue, this did mean so
     * When all fields are complete the users comment is posted 
 
 
-# Superuser functions
+## Superuser functions
+
+* Add a product
+    * Clicking on the User icon above 'My Account', selecting the Product Management option takes the superuer to the add product page
+    * If any field on the add product form is left blank the user is prompted to complete the missing fied on the form
+    * Clicking cancel takes the user to the products page
+    * Click add product takes the user to the product page for the added product
+* Edit a product
+    * Clicking edit from the product page directs the user to the edit product page
+    * Clicking on the cancel option on the edit product page takes the user back to products page
+    * Ticking the remove image box on the edit product page and then clicking the update button removes the image
+    * Changing details on the edit product page and then clicking the update button updates the details/image and takes the user to the product details page
+* Delete a product
+    * Clicking on the delete option removes the product completely and takes the user back to the products page
 
 
-
+* Add a news story
+    * Clicking on the User icon above 'My Account', selecting the News Management option takes the superuer to the add news page
+    * If any field on the add news form is left blank the user is prompted to complete the missing fied on the form
+    * Clicking cancel takes the user to the womens golf news page
+    * Click add product takes the user to the product page for the added product
+* Edit a product
+    * Clicking edit from the product page directs the user to the edit product page
+    * Clicking on the cancel option on the edit product page takes the user back to products page
+    * Ticking the remove image box on the edit product page and then clicking the update button removes the image
+    * Changing details on the edit product page and then clicking the update button updates the details/image and takes the user to the product details page
+* Delete a product
+    * Clicking on the delete option removes the product completely and takes the user back to the products page
 
 
 [ Back to Table of Contents](#home)
