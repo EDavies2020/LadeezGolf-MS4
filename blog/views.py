@@ -55,7 +55,7 @@ def add_post(request):
             post.slug = slugify(post.title)
             post.save()
             messages.success(request, 'Successfully added post!')
-            return redirect(reverse('blog/blog.html'))
+            return redirect(reverse('blog'))
 
         else:
             messages.error(request,
